@@ -1,0 +1,23 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+    
+- url: /
+  script: index.php
+    
+- url: /(.+\.php)$
+  script: \1
+  
+# [START env]
+env_variables:
+  # Replace project, instance, database, user and password with the values obtained
+  # when configuring your Cloud SQL instance.
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/redes2-171719:us-central1:redes2;dbname=cdf
+  MYSQL_USER: root
+  MYSQL_PASSWORD: andres87
+# [END env]
+
+beta_settings:
+    cloud_sql_instances: redes2-171719:us-central1:redes2;dbname=cdf
